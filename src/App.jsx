@@ -1,6 +1,12 @@
+import { useEffect } from 'react';
 import './App.css';
-import { HashRouter, NavLink, Routes, Route } from 'react-router-dom';
+import { HashRouter, NavLink, Routes, Route, useNavigate } from 'react-router-dom';
 
+const Home = () => {
+  return (
+    <p>這是首頁</p>
+  )
+};
 const Todo = () => {
   return <p>這是 Todo 頁面</p>;
 };
@@ -10,6 +16,17 @@ const Login = () => {
 const Register = () => {
   return <p>這是註冊頁面</p>;
 };
+const Notfound = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    setTimeout(() => {
+      navigate('/');
+    }, 1500);
+  },[navigate])
+  return (
+    <p>404找不到網頁</p>
+  )
+}
 
 function App() {
   return (
@@ -31,9 +48,11 @@ function App() {
         </div>
         {/* Routes, Route 練習區 */}
         <Routes>
+          <Route path='/' element={<Home />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/todo' element={<Todo />} />
+          <Route path='*' element={<Notfound />} />
         </Routes>
         {/* 練習區 */}
       </HashRouter>
