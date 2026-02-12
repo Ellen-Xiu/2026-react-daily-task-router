@@ -8,7 +8,14 @@ const Home = () => {
   )
 };
 const Todo = () => {
-  return <p>這是 Todo 頁面</p>;
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <p>這是 Todo 頁面</p>
+      <button type="button" onClick={()=>navigate('/login')}>登出</button>
+    </div>
+  )
 };
 const Login = () => {
   return <p>這是登入頁面</p>;
